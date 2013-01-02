@@ -4,6 +4,9 @@
  */
 package org.drchaos;
 
+import java.util.Random;
+import java.util.Scanner;
+
 /**
  *
  * @author drchaos
@@ -13,7 +16,27 @@ public class SimpleApp {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static int main(String[] args) {
+        Random generator = new Random();
+        Scanner scan = new Scanner(System.in);
+        
+        final int GUESSES = 3;
+	// (0 - 9) + 1 is 1-10
+        int secret = generator.nextInt(9)+1;
+        int myGuess = -1;
+        
+        System.out.println("I am thinking of a number between 1 and 10.\n"
+		+ "Try to guess it!");
+        for(int x=0; x<GUESSES; x++) {
+            System.out.print("Guess: ");
+            myGuess = scan.nextInt();
+	    if(myGuess == secret) {
+		    System.out.println("You guessed correct!");
+		    return 0; // Leave main(), exit program
+	    } else {
+		    System.out.println("You guessed wrong; Try again.");
+	    }
+        } 
+	return -1; // Exit status, -1 Lost game
     }
 }
