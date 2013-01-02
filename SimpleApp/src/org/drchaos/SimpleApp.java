@@ -36,7 +36,9 @@ public class SimpleApp {
 	    } else {
 		    System.out.println("You guessed wrong; Try again.");
 	    }
-        } 
+        }
+	System.out.println("The correct answer was: " + secret + ". Better luck " +
+		"next time!");
 	System.exit(-1); // Exit status, -1 Lost game
     }
 }
