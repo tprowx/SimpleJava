@@ -21,7 +21,7 @@ public class SimpleApp {
         Scanner scan = new Scanner(System.in);
         
         final int GUESSES = 3;
-	// (0 - 9) + 1 is 1-10
+	// (0 - 9) + 1 is 1-9
         int secret = generator.nextInt(9)+1;
         int myGuess = -1;
         
@@ -30,15 +30,24 @@ public class SimpleApp {
         for(int x=0; x<GUESSES; x++) {
             System.out.print("Guess: ");
             myGuess = scan.nextInt();
+            for(;;) {
+                if(myGuess < 1 || myGuess > 9) {
+		    System.out.println("Guess " + myGuess + " not between 1 and 10; " +
+                                   "please try again.");
+                    System.out.print("Guess: ");
+                    myGuess = scan.nextInt();
+		}
+                else break;
+	    }
 	    if(myGuess == secret) {
-		    System.out.println("You guessed correct!");
-		    System.exit(0); // leave main(), exit program
+		System.out.println("You guessed correct!");
+		System.exit(0); // leave main(), exit program
 	    } else {
-		    System.out.println("You guessed wrong; Try again.");
+		System.out.println("You guessed wrong; Try again.");
 	    }
         }
-	System.out.println("The correct answer was: " + secret + ". Better luck " +
-		"next time!");
-	System.exit(-1); // Exit status, -1 Lost game
+	System.out.println("The correct answer was: " + secret + ". Better luck " + 
+                           "next time!");
+	System.exit(-1); // Exit status, -1 Lost gam
     }
 }
