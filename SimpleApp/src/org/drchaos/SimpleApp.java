@@ -16,7 +16,7 @@ public class SimpleApp {
     /**
      * @param args the command line arguments
      */
-    public static int main(String[] args) {
+    public static void main(String[] args) {
         Random generator = new Random();
         Scanner scan = new Scanner(System.in);
         
@@ -32,11 +32,11 @@ public class SimpleApp {
             myGuess = scan.nextInt();
 	    if(myGuess == secret) {
 		    System.out.println("You guessed correct!");
-		    return 0; // Leave main(), exit program
+		    System.exit(0); // leave main(), exit program
 	    } else {
 		    System.out.println("You guessed wrong; Try again.");
 	    }
         } 
-	return -1; // Exit status, -1 Lost game
+	System.exit(-1); // Exit status, -1 Lost game
     }
 }
